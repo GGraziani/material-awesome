@@ -9,6 +9,7 @@ return {
   -- List of apps to start by default on some actions
   default = {
     terminal = 'lxterminal',
+    git = 'gitkraken',
     rofi = rofi_command,
     lock = 'betterlockscreen -l dim',
     quake = 'terminator',
@@ -20,7 +21,7 @@ return {
     -- associated with each tag/workspace
     browser = 'chromium',
     editor = 'code',
-    social = 'franz',
+    social = { 'franz', 'slack' },
     -- game = rofi_command,
     files = 'pcmanfm',
     music = 'spotify'

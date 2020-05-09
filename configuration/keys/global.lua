@@ -7,6 +7,18 @@ local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
 -- Key bindings
+
+local run_default_command = function(command)
+  if type(command) == "string" then
+    awful.spawn(command)
+  else
+    for key,value in pairs(command) do
+      awful.spawn(value)
+    end
+  end
+end
+
+
 local globalKeys =
   awful.util.table.join(
     -- SHOW HELP
@@ -82,7 +94,7 @@ local globalKeys =
   ),
   -- PROGRAMS
   awful.key(
-    {modkey},
+    {'Control'},
     'l',
     function()
       awful.spawn(apps.default.lock)
@@ -128,6 +140,14 @@ local globalKeys =
       awful.util.spawn(apps.default.browser)
     end,
     {description = 'open a browser', group = 'launcher'}
+  ),
+  awful.key(
+    {modkey},
+    's',
+    function()
+      run_default_command(apps.default.social)
+    end,
+    {description = 'open social apps', group = 'awesome'}
   ),
   -- Standard program
   awful.key(
