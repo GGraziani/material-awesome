@@ -25,6 +25,7 @@ return {
     browser = 'chromium',
     editor = 'code',
     social = { 'franz', 'slack' },
+    mail = 'thunderbird',
     -- game = rofi_command,
     files = 'pcmanfm',
     music = 'spotify'

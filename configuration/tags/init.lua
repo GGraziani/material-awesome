@@ -17,6 +17,12 @@ local left = {
     screen = 1
   },
   {
+    icon = icons.mail,
+    type = 'social',
+    defaultApp = apps.default.mail,
+    screen = 1
+  },
+  {
     icon = icons.music,
     type = 'music',
     defaultApp = apps.default.music,
