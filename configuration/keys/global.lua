@@ -9,14 +9,20 @@ local apps = require('configuration.apps')
 -- Key bindings
 local globalKeys =
   awful.util.table.join(
-  -- Hotkeys
-  awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
-  -- Tag browsing
-  awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
-  awful.key({altkey, 'Control'}, 'Up', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({altkey, 'Control'}, 'Down', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
-  awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
+    -- SHOW HELP
+    awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
+    -- TAG BROWSING
+    awful.key(
+      {modkey}, 'Tab',
+      awful.tag.viewnext,
+      {description = 'view previous tag', group = 'tag'}
+    ),
+    awful.key(
+      {modkey, 'Shift'},
+      'Tab',
+      awful.tag.viewprev,
+      {description = 'view next tag', group = 'tag'}
+    ),
   -- Default client focus
   awful.key(
     {modkey},
@@ -34,11 +40,12 @@ local globalKeys =
     end,
     {description = 'focus previous by index', group = 'client'}
   ),
+  -- SHOW APP LAUNCHER
   awful.key(
-    {modkey},
-    'r',
+    {altkey},
+    'm',
     function()
-      _G.screen.primary.left_panel:toggle(true)
+      _G.screen.primary.left_panel:toggle (false)
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
@@ -46,16 +53,15 @@ local globalKeys =
     {altkey},
     'space',
     function()
-      _G.screen.primary.left_panel:toggle(true)
+      _G.screen.primary.left_panel:toggle (true)
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
-  awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
+  -- WINDOW BROWSING
   awful.key(
     {altkey},
     'Tab',
     function()
-      --awful.client.focus.history.previous()
       awful.client.focus.byidx(1)
       if _G.client.focus then
         _G.client.focus:raise()
@@ -67,7 +73,6 @@ local globalKeys =
     {altkey, 'Shift'},
     'Tab',
     function()
-      --awful.client.focus.history.previous()
       awful.client.focus.byidx(-1)
       if _G.client.focus then
         _G.client.focus:raise()
@@ -75,7 +80,7 @@ local globalKeys =
     end,
     {description = 'Switch to previous window', group = 'client'}
   ),
-  -- Programms
+  -- PROGRAMS
   awful.key(
     {modkey},
     'l',
