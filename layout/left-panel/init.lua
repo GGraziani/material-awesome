@@ -10,16 +10,16 @@ local left_panel = function(screen)
 
   local panel =
     wibox {
-    screen = screen,
-    width = action_bar_width,
-    height = screen.geometry.height,
-    x = screen.geometry.x,
-    y = screen.geometry.y,
-    ontop = true,
-    bg = beautiful.background.hue_800,
-    fg = beautiful.fg_normal
-  }
-
+      screen = screen,
+      width = action_bar_width,
+      height = screen.geometry.height,
+      x = screen.geometry.x,
+      y = screen.geometry.y,
+      ontop = true,
+      bg = beautiful.background.hue_800,
+      fg = beautiful.fg_normal
+    }
+  
   panel.opened = false
 
   panel:struts(
@@ -45,7 +45,7 @@ local left_panel = function(screen)
       apps.default.rofi,
       false,
       false,
-      false,
+      false, 
       false,
       function()
         panel:toggle()
@@ -55,9 +55,6 @@ local left_panel = function(screen)
 
   local openPanel = function(should_run_rofi)
     panel.width = action_bar_width + panel_content_width
-    backdrop.visible = true
-    panel.visible = false
-    panel.visible = true
     panel:get_children_by_id('panel_content')[1].visible = true
     if should_run_rofi then
       panel:run_rofi()
