@@ -8,9 +8,9 @@ local rofi_command = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. wit
 return {
   -- List of apps to start by default on some actions
   default = {
-    terminal = 'terminator',
+    terminal = 'lxterminal',
     rofi = rofi_command,
-    lock = 'i3lock-fancy',
+    lock = 'betterlockscreen -l dim',
     quake = 'terminator',
     screenshot = '~/.config/awesome/configuration/utils/screenshot -m',
     region_screenshot = '~/.config/awesome/configuration/utils/screenshot -r',
@@ -18,12 +18,12 @@ return {
     
     -- Editing these also edits the default program
     -- associated with each tag/workspace
-    browser = 'vivaldi-stable',
-    editor = 'gedit', -- gui text editor
-    social = 'discord',
-    game = rofi_command,
-    files = 'nautilus -w',
-    music = rofi_command
+    browser = 'chromium',
+    editor = 'code',
+    social = 'franz',
+    -- game = rofi_command,
+    files = 'pcmanfm',
+    music = 'spotify'
   },
   -- List of apps to start once on start-up
   run_on_start_up = {
@@ -40,8 +40,6 @@ return {
     -- MATE'/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
      'flameshot',
      'synology-drive -minimized',
-     'steam -silent',
-     'discord',
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
