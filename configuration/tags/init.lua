@@ -32,6 +32,18 @@ local left = {
 
 local right = {
   {
+    icon = icons.terminal,
+    type = 'any',
+    defaultApp = apps.default.terminal,
+    screen = 2
+  },
+  {
+    icon = icons.git,
+    type = 'any',
+    defaultApp = apps.default.git,
+    screen = 2
+  },
+  {
     icon = icons.code,
     type = 'code',
     defaultApp = apps.default.editor,
