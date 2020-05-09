@@ -62,6 +62,14 @@ local globalKeys =
     {description = 'show main menu', group = 'awesome'}
   ),
   awful.key(
+    {altkey, 'Control'},
+    'Tab',
+    function()
+      awful.spawn(apps.default.switch)
+    end,
+    {description = 'show main menu', group = 'awesome'}
+  ),
+  awful.key(
     {altkey},
     'space',
     function()
