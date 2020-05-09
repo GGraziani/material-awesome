@@ -87,6 +87,24 @@ local LayoutBox = function(s)
   return layoutBox
 end
 
+local rightSide = function(s)
+  if s.index == 1 then
+    return {
+      layout = wibox.layout.fixed.horizontal,
+      -- Clock
+      clock_widget,
+      -- Layout box
+      LayoutBox(s)
+    }
+  else
+    return {
+      layout = wibox.layout.fixed.horizontal,
+      -- Layout box
+      LayoutBox(s)
+    }
+  end
+end
+
 local TopPanel = function(s, offset)
   local offsetx = 0
   if offset == true then
@@ -125,13 +143,7 @@ local TopPanel = function(s, offset)
       add_button
     },
     nil,
-    {
-      layout = wibox.layout.fixed.horizontal,
-      -- Clock
-      clock_widget,
-      -- Layout box
-      LayoutBox(s)
-    }
+    rightSide(s)
   }
 
   return panel
