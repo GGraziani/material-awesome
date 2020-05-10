@@ -357,6 +357,39 @@ local globalKeys =
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
+  -- Spotify keys
+  awful.key(
+    {},
+    'XF86AudioPlay',
+    function()
+      awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause')
+    end,
+    {description = 'Play button', group = 'client'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioStop',
+    function()
+      awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop')
+    end,
+    {description = 'Stop button', group = 'client'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPrev',
+    function()
+      awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous')
+    end,
+    {description = 'Prev button', group = 'client'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioNext',
+    function()
+      awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next')
+    end,
+    {description = 'Next button', group = 'client'}
+  ),
   -- Screen management
   awful.key(
     {modkey},
@@ -381,29 +414,6 @@ local globalKeys =
   ),
   -- Custom hotkeys
   -- vfio integration
-  awful.key(
-    {'Control',altkey},
-    'space',
-    function()
-      awful.util.spawn_with_shell('vm-attach attach')
-    end
-  ),
-   -- Lutris hotkey
-  awful.key(
-    {modkey},
-    'g',
-    function()
-      awful.util.spawn_with_shell('lutris')
-    end
-  ),
-  -- System Monitor hotkey - MATE version
-  awful.key(
-    {modkey},
-    'm',
-    function()
-      awful.util.spawn_with_shell('mate-system-monitor')
-    end
-  ),
   -- File Manager
   awful.key(
     {modkey},
