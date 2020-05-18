@@ -15,7 +15,7 @@ local run_default_command = function(command)
     for key,value in pairs(command) do
       awful.spawn(value)
     end
-  end
+  end 
 end
 
 
@@ -52,6 +52,38 @@ local globalKeys =
     end,
     {description = 'focus previous by index', group = 'client'}
   ),
+  -- Default client BROWSING
+  awful.key(
+    {altkey},
+    'Tab',
+    function()
+      awful.client.focus.byidx(1)
+      _G.client.focus:raise()
+      if _G.client.focus then
+        _G.client.focus:raise()
+      end
+    end,
+    {description = 'Switch to next window', group = 'client'}
+  ),
+  awful.key(
+    {altkey, 'Shift'},
+    'Tab',
+    function()
+      awful.client.focus.byidx(-1)
+      if _G.client.focus then
+        _G.client.focus:raise()
+      end
+    end,
+    {description = 'Switch to previous window', group = 'client'}
+  ),
+  awful.key(
+    {altkey},
+    'd',
+    function()
+      awful.screen.focus_relative(1)
+    end,
+    {description = 'Switch to next screen', group = 'client'}
+  ),
   -- SHOW APP LAUNCHER
   awful.key(
     {altkey},
@@ -76,29 +108,6 @@ local globalKeys =
       _G.screen.primary.left_panel:toggle (true)
     end,
     {description = 'show main menu', group = 'awesome'}
-  ),
-  -- WINDOW BROWSING
-  awful.key(
-    {altkey},
-    'Tab',
-    function()
-      awful.client.focus.byidx(1)
-      if _G.client.focus then
-        _G.client.focus:raise()
-      end
-    end,
-    {description = 'Switch to next window', group = 'client'}
-  ),
-  awful.key(
-    {altkey, 'Shift'},
-    'Tab',
-    function()
-      awful.client.focus.byidx(-1)
-      if _G.client.focus then
-        _G.client.focus:raise()
-      end
-    end,
-    {description = 'Switch to previous window', group = 'client'}
   ),
   -- PROGRAMS
   awful.key(
