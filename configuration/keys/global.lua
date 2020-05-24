@@ -58,7 +58,6 @@ local globalKeys =
     'Tab',
     function()
       awful.client.focus.byidx(1)
-      _G.client.focus:raise()
       if _G.client.focus then
         _G.client.focus:raise()
       end
