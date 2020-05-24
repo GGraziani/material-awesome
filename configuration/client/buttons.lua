@@ -26,5 +26,19 @@ return awful.util.table.join(
     function()
       awful.layout.inc(-1)
     end
+  ),
+  awful.button(
+    {},
+    6,
+    function()
+      awful.key.execute({}, 'Left')
+    end
+  ),
+  awful.button(
+    {},
+    7,
+    function()
+      awful.key.execute({}, 'Right')
+    end
   )
 )
