@@ -24,7 +24,7 @@ return {
     -- associated with each tag/workspace
     browser = 'chromium',
     editor = 'code',
-    social = { 'slack', 'telegram-desktop', 'whatsapp-nativefier-dark' },
+    social = { 'franz' },
     mail = 'thunderbird',
     -- game = rofi_command,
     files = 'pcmanfm',
