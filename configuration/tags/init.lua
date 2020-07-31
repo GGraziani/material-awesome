@@ -69,48 +69,34 @@ awful.layout.layouts = {
   awful.layout.suit.floating
 }
 
-for i, tag in pairs(left) do
-  awful.screen.connect_for_each_screen (
-    function(s)
-      if (s.index == tag.screen) then
-        awful.tag.add(
-          i,
-          {
-            icon = tag.icon,
-            icon_only = true,
-            layout = awful.layout.suit.tile,
-            gap_single_client = false,
-            gap = 4,
-            screen = s,
-            defaultApp = tag.defaultApp,
-            selected = i == 1
-          }
-        )
-      end
-    end
-  )
+local function initScreens(screen_layout, single)
+
+  for i, tag in pairs(screen_layout) do
+    awful.tag.add(
+      i,
+      {
+        icon = tag.icon,
+        icon_only = true,
+        layout = awful.layout.suit.tile,
+        gap_single_client = false,
+        gap = 4,
+        screen = single and screen[1] or screen[tag.screen],
+        defaultApp = tag.defaultApp,
+        selected = i == 1
+      }
+    )
+  end
 end
 
-for i, tag in pairs(right) do
-  awful.screen.connect_for_each_screen (
-    function(s)
-      if (s.index == tag.screen) then
-        awful.tag.add(
-          i,
-          {
-            icon = tag.icon,
-            icon_only = true,
-            layout = awful.layout.suit.tile,
-            gap_single_client = false,
-            gap = 4,
-            screen = s,
-            defaultApp = tag.defaultApp,
-            selected = i == 1
-          }
-        )
-      end
-    end
-  )
+if (screen.count() == 1) then
+  local tags = left
+  for k,v in pairs(right) do 
+    table.insert(tags, v)
+  end
+  initScreens(tags, true)
+else
+  initScreens(left, false)
+  initScreens(right, false)   
 end
 
 _G.tag.connect_signal(
