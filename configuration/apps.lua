@@ -10,7 +10,7 @@ local rofi_switch_command = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width '
 return {
   -- List of apps to start by default on some actions
   default = {
-    terminal = 'lxterminal',
+    terminal = 'gnome-terminal',
     git = 'gitkraken',
     rofi = rofi_command,
     switch = rofi_switch_command,
@@ -27,7 +27,7 @@ return {
     social = { 'franz' },
     mail = 'thunderbird',
     -- game = rofi_command,
-    files = 'pcmanfm',
+    files = 'nautilus',
     music = 'spotify'
   },
   -- List of apps to start once on start-up
@@ -47,6 +47,8 @@ return {
      'synology-drive -minimized',
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
-    '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
+    '~/.config/awesome/configuration/awspawn', -- Spawn "dirty" apps that can linger between sessions
+    -- FROM HERE USER APP
+    'sh .screenlayout.sh'
   }
 }

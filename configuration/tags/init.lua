@@ -3,6 +3,7 @@ local gears = require('gears')
 local icons = require('theme.icons')
 local apps = require('configuration.apps')
 
+
 local left = {
   {
     icon = icons.chrome,
@@ -96,7 +97,7 @@ if (screen.count() == 1) then
   initScreens(tags, true)
 else
   initScreens(left, false)
-  initScreens(right, false)   
+  initScreens(right, false)
 end
 
 _G.tag.connect_signal(
