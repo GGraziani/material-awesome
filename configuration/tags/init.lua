@@ -12,6 +12,12 @@ local left = {
     screen = 1
   },
   {
+    icon = icons.folder,
+    type = 'files',
+    defaultApp = apps.default.files,
+    screen = 1
+  },
+  {
     icon = icons.social,
     type = 'social',
     defaultApp = apps.default.social,
@@ -28,13 +34,7 @@ local left = {
     type = 'music',
     defaultApp = apps.default.music,
     screen = 1
-  },
-  {
-    icon = icons.folder,
-    type = 'files',
-    defaultApp = apps.default.files,
-    screen = 1
-  },
+  }
 }
 
 local right = {

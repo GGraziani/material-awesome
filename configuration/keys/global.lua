@@ -37,7 +37,7 @@ local globalKeys =
     ),
   -- Default client focus
   awful.key(
-    {modkey},
+    {altkey},
     'd',
     function()
       awful.client.focus.byidx(1)
@@ -76,7 +76,7 @@ local globalKeys =
     {description = 'Switch to previous window', group = 'client'}
   ),
   awful.key(
-    {altkey},
+    {modkey},
     'd',
     function()
       awful.screen.focus_relative(1)
