@@ -51,6 +51,12 @@ local right = {
     screen = 2
   },
   {
+    icon = icons.thermometer,
+    type = 'code',
+    defaultApp = apps.default.editor,
+    screen = 2
+  },
+  {
     icon = icons.git,
     type = 'code',
     defaultApp = apps.default.git,
