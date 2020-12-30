@@ -8,13 +8,13 @@ local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
 -- Key bindings
 
-local run_default_command = function(command)
+local run_default_command = function(command, props)
   if type(command) == "string" then
-    awful.spawn(command)
+    awful.spawn(command, props)
   else
     for key,value in pairs(command) do
-      awful.spawn(value)
-    end
+      awful.spawn(value, props)
+    end    
   end 
 end
 
@@ -410,7 +410,7 @@ local globalKeys =
     {modkey},
     't',
     function()
-      awful.spawn(
+      run_default_command(
           awful.screen.focused().selected_tag.defaultApp,
           {
             tag = _G.mouse.screen.selected_tag,
