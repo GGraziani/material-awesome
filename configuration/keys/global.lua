@@ -126,8 +126,8 @@ local globalKeys =
     {description = 'Mark an area and screenshot it 10 seconds later (clipboard)', group = 'screenshots (clipboard)'}
   ),
   awful.key(
-    {},
-    'Print',
+    {altkey, 'Shift'},
+    '5',
     function()
       awful.util.spawn_with_shell(apps.default.screenshot)
     end,
@@ -165,7 +165,7 @@ local globalKeys =
     end,
     {description = 'open social apps', group = 'awesome'}
   ),
-  -- Standard program
+  -- Default programs
   awful.key(
     {modkey},
     'x',

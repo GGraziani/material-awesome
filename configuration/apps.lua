@@ -16,9 +16,7 @@ return {
     switch = rofi_switch_command,
     lock = 'betterlockscreen -l dim',
     quake = 'terminator',
-    screenshot = '~/.config/awesome/configuration/utils/screenshot -m',
-    region_screenshot = '~/.config/awesome/configuration/utils/screenshot -r',
-    delayed_screenshot = 'sleep 10 ; ~/.config/awesome/configuration/utils/screenshot -r',
+    screenshot = '~/.config/awesome/configuration/utils/screenshot',
     
     -- Editing these also edits the default program
     -- associated with each tag/workspace
@@ -48,5 +46,6 @@ return {
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     '~/.config/awesome/configuration/awspawn', -- Spawn "dirty" apps that can linger between sessions
+    '/usr/bin/setxkbmap -option compose:rctrl'
   }
 }
