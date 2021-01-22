@@ -4,69 +4,36 @@ local icons = require('theme.icons')
 local apps = require('configuration.apps')
 
 
-local left = {
-  {
-    icon = icons.chrome,
-    type = 'chrome',
-    defaultApp = apps.default.browser,
-    screen = 1
-  },
-  {
-    icon = icons.folder,
-    type = 'files',
-    defaultApp = apps.default.files,
-    screen = 1
-  },
-  {
-    icon = icons.social,
-    type = 'social',
-    defaultApp = apps.default.social,
-    screen = 1
-  },
-  {
-    icon = icons.mail,
-    type = 'social',
-    defaultApp = apps.default.mail,
-    screen = 1
-  },
-  {
-    icon = icons.music,
-    type = 'music',
-    defaultApp = apps.default.music,
-    screen = 1
-  }
-}
-
-local right = {
+local tags = {
+  -- {
+  --   icon = icons.chrome,
+  --   type = 'chrome',
+  --   defaultApp = apps.default.browser
+  -- },
   {
     icon = icons.terminal,
     type = 'any',
-    defaultApp = apps.default.terminal,
-    screen = 2
+    defaultApp = apps.default.terminal
   },
   {
     icon = icons.code,
     type = 'code',
-    defaultApp = apps.default.editor,
-    screen = 2
-  },
-  {
-    icon = icons.thermometer,
-    type = 'code',
-    defaultApp = apps.default.editor,
-    screen = 2
+    defaultApp = apps.default.editor
   },
   {
     icon = icons.git,
     type = 'code',
-    defaultApp = apps.default.git,
-    screen = 2
+    defaultApp = apps.default.git
   },
   {
     icon = icons.lab,
     type = 'any',
-    defaultApp = apps.default.rofi,
-    screen = 2
+    defaultApp = apps.default.rofi
+  },
+  {
+    icon = icons.folder,
+    type = 'files',
+    defaultApp = apps.default.files
   }
 }
 
@@ -76,7 +43,7 @@ awful.layout.layouts = {
   awful.layout.suit.floating
 }
 
-local function initScreens(screen_layout, single)
+local function initScreens(screen_layout)
 
   for i, tag in pairs(screen_layout) do
     awful.tag.add(
@@ -87,7 +54,7 @@ local function initScreens(screen_layout, single)
         layout = awful.layout.suit.tile,
         gap_single_client = false,
         gap = 4,
-        screen = single and screen[1] or screen[tag.screen],
+        screen = 1,
         defaultApp = tag.defaultApp,
         selected = i == 1
       }
@@ -95,16 +62,7 @@ local function initScreens(screen_layout, single)
   end
 end
 
-if (screen.count() == 1) then
-  local tags = left
-  for k,v in pairs(right) do 
-    table.insert(tags, v)
-  end
-  initScreens(tags, true)
-else
-  initScreens(left, false)
-  initScreens(right, false)
-end
+initScreens(tags)
 
 _G.tag.connect_signal(
   'property::layout',
