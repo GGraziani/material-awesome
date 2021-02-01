@@ -18,18 +18,6 @@ local left = {
     screen = 1
   },
   {
-    icon = icons.social,
-    type = 'social',
-    defaultApp = apps.default.social,
-    screen = 1
-  },
-  {
-    icon = icons.mail,
-    type = 'social',
-    defaultApp = apps.default.mail,
-    screen = 1
-  },
-  {
     icon = icons.music,
     type = 'music',
     defaultApp = apps.default.music,
@@ -46,12 +34,6 @@ local right = {
   },
   {
     icon = icons.code,
-    type = 'code',
-    defaultApp = apps.default.editor,
-    screen = 2
-  },
-  {
-    icon = icons.thermometer,
     type = 'code',
     defaultApp = apps.default.editor,
     screen = 2
@@ -96,8 +78,8 @@ local function initScreens(screen_layout, single)
 end
 
 if (screen.count() == 1) then
-  local tags = left
-  for k,v in pairs(right) do 
+  local tags = right
+  for k,v in pairs(left) do 
     table.insert(tags, v)
   end
   initScreens(tags, true)
